@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Routes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Bus Routes List</h2>
+
+    <!-- Table to display bus routes -->
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Route Name</th>
+                <th>bus name</th>
+                <th>departure time</th>
+                <th>arrival time</th>
+                <th>via</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if routes %}
+                {% for x in routes %}
+                    <tr>
+                        <td>{{ x.id }}</td>
+                        <td>{{ x.route.name }}</td>
+                        <td>{{ x.bus.name }}</td>
+                        <td>{{ x.departure_time }}</td>
+                        <td>{{ x.arrival_time }}</td>
+                        <td>{{ x.via }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="5">No routes available.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+</body>
+</html>
